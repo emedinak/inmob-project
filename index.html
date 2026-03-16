@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto Inmobiliario</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+</head>
+
+<a href="https://wa.me/593958924566?text=Hola%2C%20me%20gustaría%20recibir%20mas%20información%20del%20proyecto."
+    class="whatsapp-button" target="_blank">
+
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+
+</a>
+
+<div class="lightbox" id="lightbox">
+
+    <span class="close-lightbox">&times;</span>
+
+    <img class="lightbox-img" id="lightbox-img">
+
+</div>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">Proyecto</div>
+
+            <nav class="nav-links">
+                <a href="#about">Proyecto</a>
+                <a href="#amenities">Amenities</a>
+                <a href="#masterplan">Masterplan</a>
+                <a href="#gallery">Galería</a>
+                <a href="#location">Ubicación</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-slider" id="heroSlider">
+
+            <div class="slide active">
+                <img src="images/CCAY002.jpg.jpeg" alt="Render 1">
+            </div>
+
+            <div class="slide">
+                <img src="images/CCAY001.jpg.jpeg" alt="Render 2">
+            </div>
+
+            <div class="slide">
+                <img src="images/CCAY007.jpg.jpeg" alt="Render 3">
+            </div>
+
+        </div>
+
+        <div class="hero-gradient"></div>
+
+        <div class="hero-content">
+            <p class="hero-kicker">Proyecto residencial en la costa ecuatoriana</p>
+
+            <h1>Un nuevo concepto de vida frente al mar</h1>
+
+            <p class="hero-subtitle">
+                Arquitectura, naturaleza y espacios diseñados para disfrutar
+                de una vida exclusiva junto al océano.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">Conoce el proyecto</a>
+                <a href="#contact" class="btn btn-secondary">Solicitar información</a>
+            </div>
+        </div>
+
+        <!-- botones -->
+        <button class="slider-btn prev" id="prevSlide">‹</button>
+        <button class="slider-btn next" id="nextSlide">›</button>
+
+        <!-- dots -->
+        <div class="slider-dots" id="sliderDots"></div>
+
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="section-shell stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">107</span>
+                <span class="stat-label">Lotes proyectados</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">Mar</span>
+                <span class="stat-label">Entorno costero privilegiado</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">Social</span>
+                <span class="stat-label">Área recreativa y amenities</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">Privado</span>
+                <span class="stat-label">Acceso controlado</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+        <div class="section-shell about-grid">
+            <div class="about-copy">
+                <p class="section-kicker">El proyecto</p>
+                <h2>Diseñado para quienes buscan tranquilidad, naturaleza y estilo</h2>
+                <p>
+                    Este desarrollo residencial propone una experiencia distinta de vida en la
+                    costa ecuatoriana, integrando arquitectura inspirada en el entorno, áreas
+                    sociales abiertas y una distribución pensada para disfrutar del paisaje.
+                </p>
+                <p>
+                    El proyecto combina privacidad, confort y una estética cálida para crear
+                    un destino ideal tanto para vivir como para invertir.
+                </p>
+            </div>
+
+            <div class="about-image-wrap">
+                <img src="images/CCAY003.jpg.jpeg" alt="Vista del proyecto" class="about-image" />
+            </div>
+        </div>
+    </section>
+
+    <!-- LIFESTYLE -->
+    <section class="lifestyle">
+        <div class="section-shell lifestyle-grid">
+            <div class="lifestyle-image large">
+                <img src="images/CCAY005.jpg.jpeg" alt="Lifestyle proyecto 1" />
+            </div>
+            <div class="lifestyle-side">
+                <div class="lifestyle-image small">
+                    <img src="images/CCAY006.jpg.jpeg" alt="Lifestyle proyecto 2" />
+                </div>
+                <div class="lifestyle-text-card">
+                    <p class="section-kicker">Estilo de vida</p>
+                    <h3>Espacios abiertos, arquitectura costera y una atmósfera única</h3>
+                    <p>
+                        Cada rincón del proyecto busca transmitir calma, amplitud y conexión
+                        con la naturaleza.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AMENITIES -->
+    <section id="amenities" class="amenities">
+        <div class="section-shell">
+            <p class="section-kicker center">Amenidades</p>
+            <h2 class="section-title center">Espacios pensados para disfrutar</h2>
+
+            <div class="amenities-grid">
+                <article class="amenity-card">
+                    <img src="images/CCAY001.jpg.jpeg" alt="Piscina" />
+                    <div class="amenity-card-body">
+                        <h3>Piscina</h3>
+                        <p>
+                            Un espacio diseñado para relajarse, compartir y disfrutar del clima
+                            privilegiado de la costa.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="amenity-card">
+                    <img src="images/CCAY004.jpg.jpeg" alt="Área social" />
+                    <div class="amenity-card-body">
+                        <h3>Área social</h3>
+                        <p>
+                            Ambientes abiertos y acogedores para reuniones, descanso y vida
+                            comunitaria.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="amenity-card">
+                    <img src="images/CCAY007.jpg.jpeg" alt="Acceso" />
+                    <div class="amenity-card-body">
+                        <h3>Acceso controlado</h3>
+                        <p>
+                            Ingreso jerarquizado y seguridad como parte esencial de la propuesta
+                            residencial.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- MASTERPLAN -->
+    <section id="masterplan" class="masterplan">
+        <div class="section-shell masterplan-grid">
+            <div class="masterplan-copy">
+                <p class="section-kicker">Masterplan</p>
+                <h2>Una implantación pensada para conectar vistas, lotes y áreas sociales</h2>
+                <div class="price-badge masterplan-open">
+                    Terrenos desde <strong>$36.000</strong>
+                </div>
+                <p>
+                    El plan maestro organiza los lotes, circulaciones, accesos y amenities de
+                    forma clara, integrando miradores, vistas al mar y zonas comunes como parte
+                    del valor del proyecto.
+                </p>
+                <a href="#contact" class="text-link">Solicitar más información</a>
+            </div>
+
+            <div class="masterplan-image-wrap">
+                <img src="images/masterplan.jpg" alt="Masterplan del proyecto"
+                    class="masterplan-image masterplan-click" />
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="project-video">
+
+        <div class="section-shell">
+
+            <p class="section-kicker center">Video</p>
+            <h2 class="section-title center">Explora el proyecto en video</h2>
+
+            <div class="video-wrapper">
+
+                <video controls autoplay muted loop playsinline>
+                    <source src="videos/proyecto.mp4" type="video/mp4">
+                </video>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="gallery">
+
+        <p class="section-kicker center">Galería</p>
+        <h2 class="section-title center">Explora los espacios del proyecto</h2>
+
+        <div class="coverflow">
+
+            <button class="cover-btn prev">&#10094;</button>
+
+            <div class="cover-container">
+
+                <img class="cover-img left">
+                <img class="cover-img center">
+                <img class="cover-img right">
+
+            </div>
+
+            <button class="cover-btn next">&#10095;</button>
+
+        </div>
+
+    </section>
+
+    <!-- LOCATION -->
+    <section id="location" class="location">
+        <div class="section-shell location-container">
+
+            <div class="location-text">
+                <p class="section-kicker">Ubicación</p>
+
+                <h2>Ubicado en Ayangue, Santa Elena</h2>
+
+                <p>
+                    Un entorno privilegiado en la costa ecuatoriana, rodeado de naturaleza
+                    y a pocos minutos del mar.
+                </p>
+
+                <a href="https://maps.app.goo.gl/8QavF4Exbt1KtWc68" target="_blank" class="map-button">
+                    <span class="map-icon">📍</span>
+                    Ver Ubicación
+                </a>
+            </div>
+
+            <div class="location-map">
+                <img src="images/location-map.jpg" alt="Mapa de ubicación de Ayangue" />
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <div class="section-shell contact-grid">
+            <div class="contact-copy">
+                <p class="section-kicker">Contacto</p>
+                <h2>Solicita información del proyecto</h2>
+                <p>
+                    Déjanos tus datos y te contactaremos con más detalles, disponibilidad y
+                    próximos avances.
+                </p>
+            </div>
+
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdawaebr" method="POST">
+                <input type="text" name="nombre" placeholder="Nombre" required />
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="telefono" placeholder="Teléfono">
+                <textarea name="mensaje" placeholder="Mensaje"></textarea>
+                <button type="submit">
+                    Enviar
+                </button>
+                <p id="form-message" style="display:none; margin-top:10px; color:green;">
+                    Mensaje enviado. Nos pondremos en contacto pronto.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-left">
+
+                <h3>Proyecto</h3>
+
+                <p>
+                    Proyecto residencial ubicado en Ayangue,
+                    Santa Elena, Ecuador.
+                </p>
+
+            </div>
+
+            <div class="footer-right">
+
+                <p>Contacto</p>
+
+                <p>info@proyecto.com</p>
+
+                <p>+593 99 000 0000</p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            © 2026 Proyecto Inmobiliario
+
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
