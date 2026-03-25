@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Proyecto Inmobiliario</title>
 
+    <!-- PRELOAD imágenes críticas del hero -->
+    <link rel="preload" as="image" href="images/CCAY002.jpg.jpeg" fetchpriority="high">
+    <link rel="preload" as="image" href="images/CCAY001.jpg.jpeg">
+
     <link rel="stylesheet" href="styles.css" />
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap"
@@ -14,13 +18,13 @@
 
 <body>
 
-    <!-- WHATSAPP (movido dentro del body) -->
+    <!-- WHATSAPP -->
     <a href="https://wa.me/593958924566?text=Hola%2C%20me%20gustaría%20recibir%20mas%20información%20del%20proyecto."
         class="whatsapp-button" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
     </a>
 
-    <!-- LIGHTBOX (movido dentro del body) -->
+    <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox">
         <span class="close-lightbox">&times;</span>
         <img class="lightbox-img" id="lightbox-img" alt="">
@@ -55,15 +59,15 @@
         <div class="hero-slider" id="heroSlider">
 
             <div class="slide active">
-                <img src="images/CCAY002.jpg.jpeg" alt="Render 1">
+                <img src="images/CCAY002.jpg.jpeg" alt="Render 1" fetchpriority="high" decoding="async">
             </div>
 
             <div class="slide">
-                <img src="images/CCAY001.jpg.jpeg" alt="Render 2">
+                <img src="images/CCAY001.jpg.jpeg" alt="Render 2" decoding="async">
             </div>
 
             <div class="slide">
-                <img src="images/CCAY007.jpg.jpeg" alt="Render 3">
+                <img src="images/CCAY007.jpg.jpeg" alt="Render 3" decoding="async">
             </div>
 
         </div>
@@ -133,7 +137,7 @@
             </div>
 
             <div class="about-image-wrap">
-                <img src="images/CCAY003.jpg.jpeg" alt="Vista del proyecto" class="about-image" />
+                <img src="images/CCAY003.jpg.jpeg" alt="Vista del proyecto" class="about-image" loading="lazy" decoding="async" />
             </div>
         </div>
     </section>
@@ -142,11 +146,11 @@
     <section class="lifestyle">
         <div class="section-shell lifestyle-grid">
             <div class="lifestyle-image large">
-                <img src="images/CCAY005.jpg.jpeg" alt="Lifestyle proyecto 1" />
+                <img src="images/CCAY005.jpg.jpeg" alt="Lifestyle proyecto 1" loading="lazy" decoding="async" />
             </div>
             <div class="lifestyle-side">
                 <div class="lifestyle-image small">
-                    <img src="images/CCAY006.jpg.jpeg" alt="Lifestyle proyecto 2" />
+                    <img src="images/CCAY006.jpg.jpeg" alt="Lifestyle proyecto 2" loading="lazy" decoding="async" />
                 </div>
                 <div class="lifestyle-text-card">
                     <p class="section-kicker">Estilo de vida</p>
@@ -168,7 +172,7 @@
 
             <div class="amenities-grid">
                 <article class="amenity-card">
-                    <img src="images/CCAY001.jpg.jpeg" alt="Piscina" />
+                    <img src="images/CCAY001.jpg.jpeg" alt="Piscina" loading="lazy" decoding="async" />
                     <div class="amenity-card-body">
                         <h3>Piscina</h3>
                         <p>
@@ -179,7 +183,7 @@
                 </article>
 
                 <article class="amenity-card">
-                    <img src="images/CCAY004.jpg.jpeg" alt="Área social" />
+                    <img src="images/CCAY004.jpg.jpeg" alt="Área social" loading="lazy" decoding="async" />
                     <div class="amenity-card-body">
                         <h3>Área social</h3>
                         <p>
@@ -190,7 +194,7 @@
                 </article>
 
                 <article class="amenity-card">
-                    <img src="images/CCAY007.jpg.jpeg" alt="Acceso" />
+                    <img src="images/CCAY007.jpg.jpeg" alt="Acceso" loading="lazy" decoding="async" />
                     <div class="amenity-card-body">
                         <h3>Acceso controlado</h3>
                         <p>
@@ -222,7 +226,7 @@
 
             <div class="masterplan-image-wrap">
                 <img src="images/masterplan.jpg" alt="Masterplan del proyecto"
-                    class="masterplan-image masterplan-click" />
+                    class="masterplan-image masterplan-click" loading="lazy" decoding="async" />
             </div>
         </div>
     </section>
@@ -233,7 +237,8 @@
             <p class="section-kicker center">Video</p>
             <h2 class="section-title center">Explora el proyecto en video</h2>
             <div class="video-wrapper">
-                <video controls autoplay muted loop playsinline>
+                <!-- preload="none": el video no se descarga hasta que el usuario le da play -->
+                <video controls muted loop playsinline preload="none" poster="images/CCAY002.jpg.jpeg" style="width:100%;height:auto;aspect-ratio:18/9;object-fit:cover;display:block;">
                     <source src="videos/proyecto.mp4" type="video/mp4">
                 </video>
             </div>
@@ -268,14 +273,11 @@
 
             <div class="location-text">
                 <p class="section-kicker">Ubicación</p>
-
                 <h2>Ubicado en Ayangue, Santa Elena</h2>
-
                 <p>
                     Un entorno privilegiado en la costa ecuatoriana, rodeado de naturaleza
                     y a pocos minutos del mar.
                 </p>
-
                 <a href="https://maps.app.goo.gl/8QavF4Exbt1KtWc68" target="_blank" class="map-button">
                     <span class="map-icon">📍</span>
                     Ver Ubicación
@@ -283,7 +285,7 @@
             </div>
 
             <div class="location-map">
-                <img src="images/location-map.jpg" alt="Mapa de ubicación de Ayangue" />
+                <img src="images/location-map.jpg" alt="Mapa de ubicación de Ayangue" loading="lazy" decoding="async" />
             </div>
 
         </div>
