@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Proyecto Inmobiliario</title>
 
-    <!-- PRELOAD imágenes críticas del hero -->
-    <link rel="preload" as="image" href="images/CCAY002.jpg.jpeg" fetchpriority="high">
-    <link rel="preload" as="image" href="images/CCAY001.jpg.jpeg">
-
     <link rel="stylesheet" href="styles.css" />
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap"
@@ -44,7 +40,6 @@
                 <a href="#contact">Contacto</a>
             </nav>
 
-            <!-- HAMBURGER -->
             <button class="hamburger" id="hamburger" aria-label="Abrir menú">
                 <span></span>
                 <span></span>
@@ -56,44 +51,20 @@
     <!-- HERO -->
     <section class="hero">
 
-        <div class="hero-slider" id="heroSlider">
-
-            <div class="slide active">
-                <img src="images/CCAY002.jpg.jpeg" alt="Render 1" fetchpriority="high" decoding="async">
-            </div>
-
-            <div class="slide">
-                <img src="images/CCAY001.jpg.jpeg" alt="Render 2" decoding="async">
-            </div>
-
-            <div class="slide">
-                <img src="images/CCAY007.jpg.jpeg" alt="Render 3" decoding="async">
-            </div>
-
-        </div>
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="videos/proyecto.MP4" type="video/mp4">
+        </video>
 
         <div class="hero-gradient"></div>
 
         <div class="hero-content">
             <p class="hero-kicker">Proyecto residencial en la costa ecuatoriana</p>
-
-            <h1>Un nuevo concepto de vida frente al mar</h1>
-
-            <p class="hero-subtitle">
-                Arquitectura, naturaleza y espacios diseñados para disfrutar
-                de una vida exclusiva junto al océano.
-            </p>
-
+            <h1>Un nuevo concepto de vida con vista al mar</h1>
             <div class="hero-buttons">
-                <a href="#about" class="btn btn-primary">Conoce el proyecto</a>
+                <a href="#about" class="btn btn-secondary">Conoce el proyecto</a>
                 <a href="#contact" class="btn btn-secondary">Solicitar información</a>
             </div>
         </div>
-
-        <button class="slider-btn prev" id="prevSlideBtn" aria-label="Anterior">‹</button>
-        <button class="slider-btn next" id="nextSlideBtn" aria-label="Siguiente">›</button>
-
-        <div class="slider-dots" id="sliderDots"></div>
 
     </section>
 
@@ -101,19 +72,19 @@
     <section class="stats">
         <div class="section-shell stats-grid">
             <div class="stat-card">
-                <span class="stat-number">107</span>
-                <span class="stat-label">Lotes proyectados</span>
+                <span class="stat-number">Terrenos</span>
+                <span class="stat-label">107 proyectados</span>
             </div>
             <div class="stat-card">
-                <span class="stat-number">Mar</span>
-                <span class="stat-label">Entorno costero privilegiado</span>
+                <span class="stat-number">Entorno</span>
+                <span class="stat-label">Vista privilegiada al mar</span>
             </div>
             <div class="stat-card">
-                <span class="stat-number">Social</span>
+                <span class="stat-number">Familia</span>
                 <span class="stat-label">Área recreativa y amenities</span>
             </div>
             <div class="stat-card">
-                <span class="stat-number">Privado</span>
+                <span class="stat-number">Seguridad</span>
                 <span class="stat-label">Acceso controlado</span>
             </div>
         </div>
@@ -128,7 +99,7 @@
                 <p>
                     Este desarrollo residencial propone una experiencia distinta de vida en la
                     costa ecuatoriana, integrando arquitectura inspirada en el entorno, áreas
-                    sociales abiertas y una distribución pensada para disfrutar del paisaje.
+                    sociales abiertas y una distribución pensada para disfrutar la vista al mar y su entorno.
                 </p>
                 <p>
                     El proyecto combina privacidad, confort y una estética cálida para crear
@@ -137,7 +108,7 @@
             </div>
 
             <div class="about-image-wrap">
-                <img src="images/CCAY003.jpg.jpeg" alt="Vista del proyecto" class="about-image" loading="lazy" decoding="async" />
+                <img src="images/CCAY002.jpg.jpeg" alt="Vista del proyecto" class="about-image" loading="lazy" decoding="async" />
             </div>
         </div>
     </section>
@@ -167,7 +138,7 @@
     <!-- AMENITIES -->
     <section id="amenities" class="amenities">
         <div class="section-shell">
-            <p class="section-kicker center">Amenidades</p>
+            <p class="section-kicker center">Amenities</p>
             <h2 class="section-title center">Espacios pensados para disfrutar</h2>
 
             <div class="amenities-grid">
@@ -175,10 +146,7 @@
                     <img src="images/CCAY001.jpg.jpeg" alt="Piscina" loading="lazy" decoding="async" />
                     <div class="amenity-card-body">
                         <h3>Piscina</h3>
-                        <p>
-                            Un espacio diseñado para relajarse, compartir y disfrutar del clima
-                            privilegiado de la costa.
-                        </p>
+                        <p>Un espacio diseñado para relajarse, compartir y disfrutar del clima privilegiado de la costa.</p>
                     </div>
                 </article>
 
@@ -186,10 +154,7 @@
                     <img src="images/CCAY004.jpg.jpeg" alt="Área social" loading="lazy" decoding="async" />
                     <div class="amenity-card-body">
                         <h3>Área social</h3>
-                        <p>
-                            Ambientes abiertos y acogedores para reuniones, descanso y vida
-                            comunitaria.
-                        </p>
+                        <p>Ambientes abiertos y acogedores para reuniones, descanso y vida comunitaria.</p>
                     </div>
                 </article>
 
@@ -197,10 +162,7 @@
                     <img src="images/CCAY007.jpg.jpeg" alt="Acceso" loading="lazy" decoding="async" />
                     <div class="amenity-card-body">
                         <h3>Acceso controlado</h3>
-                        <p>
-                            Ingreso jerarquizado y seguridad como parte esencial de la propuesta
-                            residencial.
-                        </p>
+                        <p>Ingreso jerarquizado y seguridad como parte esencial de la propuesta residencial.</p>
                     </div>
                 </article>
             </div>
@@ -227,20 +189,6 @@
             <div class="masterplan-image-wrap">
                 <img src="images/masterplan.jpg" alt="Masterplan del proyecto"
                     class="masterplan-image masterplan-click" loading="lazy" decoding="async" />
-            </div>
-        </div>
-    </section>
-
-    <!-- VIDEO -->
-    <section class="project-video">
-        <div class="section-shell">
-            <p class="section-kicker center">Video</p>
-            <h2 class="section-title center">Explora el proyecto en video</h2>
-            <div class="video-wrapper">
-                <!-- preload="none": el video no se descarga hasta que el usuario le da play -->
-                <video controls muted loop playsinline preload="none" poster="images/CCAY002.jpg.jpeg" style="width:100%;height:auto;aspect-ratio:18/9;object-fit:cover;display:block;">
-                    <source src="videos/proyecto.mp4" type="video/mp4">
-                </video>
             </div>
         </div>
     </section>
@@ -297,10 +245,7 @@
             <div class="contact-copy">
                 <p class="section-kicker">Contacto</p>
                 <h2>Solicita información del proyecto</h2>
-                <p>
-                    Déjanos tus datos y te contactaremos con más detalles, disponibilidad y
-                    próximos avances.
-                </p>
+                <p>Déjanos tus datos y te contactaremos con más detalles, disponibilidad y próximos avances.</p>
             </div>
 
             <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdawaebr" method="POST">
