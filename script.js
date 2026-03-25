@@ -214,3 +214,65 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   if(masterplanButton){
     masterplanButton.addEventListener("click", () => openLightbox("images/masterplan.jpg"));
   }
+  
+  
+  // ===============================
+  // AMENITIES — CAROUSEL
+  // ===============================
+  
+  (function () {
+    const track   = document.getElementById("amTrack");
+    const prevBtn = document.getElementById("amPrev");
+    const nextBtn = document.getElementById("amNext");
+    if (!track) return;
+  
+    const cards = Array.from(track.querySelectorAll(".am-card"));
+    const total = cards.length;
+    let current = 0;
+    let amTimer = null;
+  
+    function goTo(idx) {
+      current = (idx + total) % total;
+  
+      const prev = (current - 1 + total) % total;
+      const next = (current + 1) % total;
+  
+      cards.forEach((c, i) => {
+        c.classList.remove("active");
+        const visible = i === prev || i === current || i === next;
+        c.style.display = visible ? "" : "none";
+      });
+  
+      cards[prev].classList.remove("active");
+      cards[next].classList.remove("active");
+      cards[current].classList.add("active");
+    }
+  
+    function resetTimer() {
+      clearInterval(amTimer);
+      amTimer = setInterval(() => goTo(current + 1), 2000);
+    }
+  
+    if(prevBtn) prevBtn.addEventListener("click", () => { goTo(current - 1); resetTimer(); });
+    if(nextBtn) nextBtn.addEventListener("click", () => { goTo(current + 1); resetTimer(); });
+  
+    // Lightbox on click
+    track.addEventListener("click", e => {
+      const trigger = e.target.closest(".am-lightbox-trigger");
+      if (!trigger) return;
+      const img = trigger.querySelector("img");
+      if (img) openLightbox(img.src);
+    });
+  
+    // Swipe móvil
+    let touchStart = 0;
+    track.addEventListener("touchstart", e => { touchStart = e.touches[0].clientX; });
+    track.addEventListener("touchend",   e => {
+      const diff = touchStart - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) { diff > 0 ? goTo(current + 1) : goTo(current - 1); resetTimer(); }
+    });
+  
+    goTo(0);
+    resetTimer();
+  
+  })();
