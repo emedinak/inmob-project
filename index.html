@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Proyecto Inmobiliario</title>
+    <title>CÁDIZ — Urbanización en Ayangue</title>
 
     <link rel="stylesheet" href="styles.css" />
     <link
@@ -13,6 +13,9 @@
 </head>
 
 <body>
+
+    <!-- PAGE ENTRANCE OVERLAY -->
+    <div class="page-enter"></div>
 
     <!-- WHATSAPP -->
     <a href="https://wa.me/593958924566?text=Hola%2C%20me%20gustaría%20recibir%20mas%20información%20del%20proyecto."
@@ -49,7 +52,6 @@
 
     <!-- HERO -->
     <section class="hero">
-
         <video class="hero-video" autoplay muted loop playsinline>
             <source src="videos/proyecto.MP4" type="video/mp4">
         </video>
@@ -64,25 +66,24 @@
                 <a href="#contact" class="btn btn-secondary">Solicitar Información</a>
             </div>
         </div>
-
     </section>
 
     <!-- STATS -->
     <section class="stats">
         <div class="section-shell stats-grid">
-            <div class="stat-card">
+            <div class="stat-card" data-reveal data-delay="100">
                 <span class="stat-number">Terrenos</span>
                 <span class="stat-label">107 unidades</span>
             </div>
-            <div class="stat-card">
+            <div class="stat-card" data-reveal data-delay="200">
                 <span class="stat-number">Entorno</span>
                 <span class="stat-label">Vista privilegiada al mar</span>
             </div>
-            <div class="stat-card">
+            <div class="stat-card" data-reveal data-delay="300">
                 <span class="stat-number">Familia</span>
                 <span class="stat-label">Áreas recreativas y amenities</span>
             </div>
-            <div class="stat-card">
+            <div class="stat-card" data-reveal data-delay="400">
                 <span class="stat-number">Seguridad</span>
                 <span class="stat-label">Acceso controlado</span>
             </div>
@@ -92,7 +93,7 @@
     <!-- ABOUT -->
     <section id="about" class="about">
         <div class="section-shell about-grid">
-            <div class="about-copy">
+            <div class="about-copy" data-reveal="left">
                 <p class="section-kicker">La Urbanización</p>
                 <h2>Diseñado para quienes buscan tranquilidad, naturaleza y estilo</h2>
                 <p>
@@ -106,7 +107,7 @@
                 </p>
             </div>
 
-            <div class="about-image-wrap">
+            <div class="about-image-wrap" data-reveal="right" data-delay="200">
                 <img src="images/CCAY002.jpg.jpeg" alt="Vista del proyecto" class="about-image" loading="lazy" decoding="async" />
             </div>
         </div>
@@ -115,14 +116,14 @@
     <!-- LIFESTYLE -->
     <section class="lifestyle">
         <div class="section-shell lifestyle-grid">
-            <div class="lifestyle-image large">
+            <div class="lifestyle-image large" data-reveal="left">
                 <img src="images/CCAY005.jpg.jpeg" alt="Lifestyle proyecto 1" loading="lazy" decoding="async" />
             </div>
             <div class="lifestyle-side">
-                <div class="lifestyle-image small">
+                <div class="lifestyle-image small" data-reveal data-delay="100">
                     <img src="images/CCAY006.jpg.jpeg" alt="Lifestyle proyecto 2" loading="lazy" decoding="async" />
                 </div>
-                <div class="lifestyle-text-card">
+                <div class="lifestyle-text-card" data-reveal data-delay="250">
                     <p class="section-kicker">Estilo de vida</p>
                     <h3>Espacios abiertos, arquitectura costera y una atmósfera única</h3>
                     <p>
@@ -137,9 +138,9 @@
     <!-- AMENITIES -->
     <section id="amenities" class="amenities">
         <div class="section-shell">
-            <p class="section-kicker center">Amenities</p>
-            <h2 class="section-title center">Espacios pensados para disfrutar</h2>
-            <p class="amenities-subtitle">Una urbanización que va más allá del terreno: cada amenity ha sido concebido para
+            <p class="section-kicker center" data-reveal>Amenities</p>
+            <h2 class="section-title center" data-reveal data-delay="100">Espacios pensados para disfrutar</h2>
+            <p class="amenities-subtitle" data-reveal data-delay="200">Una urbanización que va más allá del terreno: cada amenity ha sido concebido para
                 enriquecer la vida en comunidad y familia.</p>
         </div>
 
@@ -174,8 +175,7 @@
                             <img src="images/CCAY002.jpg.jpeg" alt="Área social" loading="lazy" decoding="async" />
                             <span class="am-zoom">&#x2922;</span>
                         </div>
-                        <div class="am-body"><h3>Casa Club</h3><p>Ambientes abiertos y acogedores con espacios para relajarse, compartir y disfrutar de la vista al
-                            mar.</p></div>
+                        <div class="am-body"><h3>Casa Club</h3><p>Ambientes abiertos y acogedores con espacios para relajarse, compartir y disfrutar de la vista al mar.</p></div>
                     </div>
 
                     <div class="am-card">
@@ -190,14 +190,13 @@
             </div>
 
             <button class="am-arrow" id="amNext">&#10095;</button>
-
         </div>
     </section>
 
     <!-- MASTERPLAN -->
     <section id="masterplan" class="masterplan">
         <div class="section-shell masterplan-grid">
-            <div class="masterplan-copy">
+            <div class="masterplan-copy" data-reveal="left">
                 <p class="section-kicker">Masterplan</p>
                 <h2>Un lugar para disfrutar cada vista, cada espacio y cada momento</h2>
                 <div class="price-badge masterplan-open">
@@ -210,43 +209,52 @@
                 <a href="#contact" class="text-link">Solicitar más información</a>
             </div>
 
-            <div class="masterplan-image-wrap">
+            <div class="masterplan-image-wrap" data-reveal="right" data-delay="200">
                 <img src="images/masterplan.jpg" alt="Masterplan del proyecto"
                     class="masterplan-image masterplan-click" loading="lazy" decoding="async" />
             </div>
         </div>
     </section>
 
-<!-- LOCATION -->
-<section id="location" class="location">
-    <div class="section-shell location-container">
+    <!-- LOCATION -->
+    <section id="location" class="location">
+        <div class="section-shell location-container">
 
-        <div class="location-text">
-            <p class="section-kicker">Ubicación</p>
-            <h2>Ubicado en Ayangue, Santa Elena</h2>
+            <div class="location-text" data-reveal="left">
+                <p class="section-kicker">Ubicación</p>
+                <h2>Ubicado en Ayangue, Santa Elena</h2>
+                <p>
+                    Un entorno privilegiado en la costa ecuatoriana, rodeado de naturaleza
+                    y a pocos minutos del mar.
+                </p>
+                <a href="https://maps.app.goo.gl/8QavF4Exbt1KtWc68" target="_blank" class="map-button">
+                    <span class="map-icon">📍</span>
+                    Ver Ubicación
+                </a>
+            </div>
+
+            <div class="location-map" data-reveal="right" data-delay="200">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20000!2d-80.74714912240046!3d-1.9748242660691446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902dd9c2f8478bc9%3A0xd4e0e75da29a94c8!2sCampamento%20De%20Dios!5e1!3m2!1ses-419!2ses!4v1775594639056!5m2!1ses-419!2ses"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
         </div>
-
-        <div class="location-map">
-            <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20000!2d-80.74714912240046!3d-1.9748242660691446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902dd9c2f8478bc9%3A0xd4e0e75da29a94c8!2sCampamento%20De%20Dios!5e1!3m2!1ses-419!2ses!4v1775594639056!5m2!1ses-419!2ses"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-        </div>        
-    </div>
-</section>
+    </section>
 
     <!-- CONTACT -->
     <section id="contact" class="contact">
         <div class="section-shell contact-grid">
-            <div class="contact-copy">
+            <div class="contact-copy" data-reveal="left">
                 <p class="section-kicker">Contacto</p>
                 <h2>Solicita información de la urbanización</h2>
                 <p>Déjanos tus datos y te contactaremos con más detalles, disponibilidad y próximos avances.</p>
             </div>
 
-            <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdawaebr" method="POST">
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdawaebr" method="POST" data-reveal="right" data-delay="150">
                 <input type="text" name="nombre" placeholder="Nombre" required />
                 <input type="text" name="apellido" placeholder="Apellido" required />
                 <input type="email" name="email" placeholder="Email" required>
@@ -262,22 +270,21 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <h3>Proyecto</h3>
-                <p>Proyecto residencial ubicado en Ayangue, Santa Elena, Ecuador.</p>
+        <div class="footer-bar">
+            <div class="footer-brand">
+                <img src="images/logo.png" alt="Cádiz" class="footer-logo" />
             </div>
-            <div class="footer-right">
-                <p>Contacto</p>
-                <p>info@proyecto.com</p>
-                <p>+593 99 000 0000</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            © 2026 Proyecto Inmobiliario
+            <span class="footer-copy">© 2026 Cádiz · Ayangue, Ecuador</span>
+            <nav class="footer-nav">
+                <a href="#about">Urbanización</a>
+                <a href="#amenities">Amenities</a>
+                <a href="#masterplan">Masterplan</a>
+                <a href="#location">Ubicación</a>
+                <a href="#contact">Contacto</a>
+            </nav>
         </div>
     </footer>
-    
+
     <script defer src="/_vercel/insights/script.js"></script>
     <script src="script.js"></script>
 </body>

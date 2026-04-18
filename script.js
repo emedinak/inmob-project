@@ -1,4 +1,15 @@
 // ===============================
+// PAGE LOAD ENTRANCE
+// ===============================
+
+window.addEventListener("load", () => {
+  // Remove any page-enter overlay
+  const overlay = document.querySelector(".page-enter");
+  if(overlay) overlay.remove();
+});
+
+
+// ===============================
 // SMOOTH SCROLL
 // ===============================
 
@@ -51,7 +62,7 @@ if(hamburger && navLinks){
 
 
 // ===============================
-// LIGHTBOX
+// LIGHTBOX (with animation)
 // ===============================
 
 const lightbox    = document.getElementById("lightbox");
@@ -61,10 +72,21 @@ const closeBtn    = document.querySelector(".close-lightbox");
 function openLightbox(src){
   lightboxImg.src = src;
   lightbox.style.display = "flex";
+  // Force reflow then add open class
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      lightbox.classList.add("open");
+    });
+  });
+  document.body.style.overflow = "hidden";
 }
 
 function closeLightbox(){
-  lightbox.style.display = "none";
+  lightbox.classList.remove("open");
+  setTimeout(() => {
+    lightbox.style.display = "none";
+    document.body.style.overflow = "";
+  }, 350);
 }
 
 if(closeBtn) closeBtn.addEventListener("click", closeLightbox);
@@ -155,9 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateGallery(){
     const n = galleryImages.length;
-    leftImg.src   = galleryImages[(galleryIndex - 1 + n) % n];
-    centerImg.src = galleryImages[galleryIndex];
-    rightImg.src  = galleryImages[(galleryIndex + 1) % n];
+    if(leftImg)   leftImg.src   = galleryImages[(galleryIndex - 1 + n) % n];
+    if(centerImg) centerImg.src = galleryImages[galleryIndex];
+    if(rightImg)  rightImg.src  = galleryImages[(galleryIndex + 1) % n];
   }
 
   function galleryNext(){
@@ -194,8 +216,10 @@ document.addEventListener("DOMContentLoaded", () => {
     centerImg.addEventListener("click", () => openLightbox(centerImg.src));
   }
 
-  updateGallery();
-  resetGalleryTimer();
+  if(leftImg) {
+    updateGallery();
+    resetGalleryTimer();
+  }
 
 });
 
@@ -272,4 +296,134 @@ if(masterplanButton){
 
   showGroup(0);
 
+})();
+
+
+// ===============================
+// SCROLL REVEAL
+// ===============================
+
+(function(){
+  const elements = document.querySelectorAll("[data-reveal]");
+
+  if(!elements.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("revealed");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: "0px 0px -50px 0px"
+  });
+
+  elements.forEach(el => observer.observe(el));
+})();
+
+
+// ===============================
+// HERO PARALLAX
+// ===============================
+
+(function(){
+  const heroVideo = document.querySelector(".hero-video");
+  if(!heroVideo) return;
+
+  let ticking = false;
+
+  window.addEventListener("scroll", () => {
+    if(!ticking){
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        if(scrollY < window.innerHeight){
+          heroVideo.style.transform = `translateY(${scrollY * 0.35}px)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+
+
+// ===============================
+// CURSOR GLOW (desktop only)
+// ===============================
+
+(function(){
+  if(window.innerWidth < 768) return;
+  if(!window.matchMedia("(hover:hover)").matches) return;
+
+  const glow = document.createElement("div");
+  glow.className = "cursor-glow";
+  document.body.appendChild(glow);
+
+  let mouseX = 0, mouseY = 0;
+  let glowX = 0, glowY = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateGlow(){
+    glowX += (mouseX - glowX) * 0.08;
+    glowY += (mouseY - glowY) * 0.08;
+    glow.style.left = glowX + "px";
+    glow.style.top  = glowY + "px";
+    requestAnimationFrame(animateGlow);
+  }
+
+  animateGlow();
+})();
+
+
+
+
+
+// ===============================
+// STAT CARDS COUNTER ANIMATION
+// ===============================
+
+(function(){
+  // Only animate numeric stat numbers
+  const statNumbers = document.querySelectorAll(".stat-number");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+
+      const el = entry.target;
+      const text = el.textContent.trim();
+      const num = parseFloat(text.replace(/[^0-9.]/g, ""));
+
+      // Only animate if it contains a number
+      if(!isNaN(num) && num > 0){
+        const prefix = text.match(/^[^0-9]*/)?.[0] || "";
+        const suffix = text.match(/[^0-9.]+$/)?.[0] || "";
+        let start = 0;
+        const duration = 1400;
+        const startTime = performance.now();
+
+        function update(now){
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(eased * num);
+          el.textContent = prefix + current + suffix;
+          if(progress < 1) requestAnimationFrame(update);
+          else el.textContent = text; // restore exact original
+        }
+
+        requestAnimationFrame(update);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statNumbers.forEach(el => observer.observe(el));
 })();
