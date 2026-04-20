@@ -258,8 +258,12 @@ if(masterplanButton){
     const prev = (c - 1 + total) % total;
     const next = (c + 1) % total;
 
+    const isMobile = window.innerWidth <= 768;
+
     cards.forEach((card, i) => {
-      const inGroup = i === prev || i === c || i === next;
+      const inGroup = isMobile
+        ? i === c
+        : i === prev || i === c || i === next;
       card.style.display = inGroup ? "" : "none";
       card.classList.toggle("active", i === c);
     });
