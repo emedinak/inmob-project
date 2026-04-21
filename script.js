@@ -257,9 +257,9 @@ if(masterplanButton){
     const c    = (centerIdx + total) % total;
     const prev = (c - 1 + total) % total;
     const next = (c + 1) % total;
-
+  
     const isMobile = window.innerWidth <= 768;
-
+  
     cards.forEach((card, i) => {
       const inGroup = isMobile
         ? i === c

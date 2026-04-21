@@ -1101,11 +1101,13 @@ img{ max-width:100%; display:block; }
   .lifestyle-text-card h3{ font-size:26px; }
 
   /* --- Amenities --- */
-  .amenities-subtitle{ font-size:15px; margin-bottom:40px; }
-  .am-carousel-outer{ gap:10px; padding:0 12px; }
-  .am-card{ flex:0 0 85vw; max-width:340px; }
-  .am-scroll-track{ gap:0; padding:24px 0 32px; justify-content:center; }
-  .am-arrow{ width:38px; height:38px; font-size:14px; }
+.amenities-subtitle { font-size:15px; margin-bottom:40px; }
+.am-carousel-outer { gap:10px; padding:0 16px; }
+.am-scroll-wrap { overflow: visible; }
+.am-scroll-track { gap:0; padding:24px 0 32px; justify-content:center; }
+.am-card { flex:0 0 100%; max-width:100%; display:none; }
+.am-card.active { display:flex; flex-direction:column; }
+.am-arrow { width:38px; height:38px; font-size:14px; }
 
   /* --- Masterplan --- */
   .masterplan-grid{ grid-template-columns:1fr; gap:32px; }
