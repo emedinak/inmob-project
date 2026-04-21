@@ -3,7 +3,6 @@
 // ===============================
 
 window.addEventListener("load", () => {
-  // Remove any page-enter overlay
   const overlay = document.querySelector(".page-enter");
   if(overlay) overlay.remove();
 });
@@ -72,7 +71,6 @@ const closeBtn    = document.querySelector(".close-lightbox");
 function openLightbox(src){
   lightboxImg.src = src;
   lightbox.style.display = "flex";
-  // Force reflow then add open class
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       lightbox.classList.add("open");
@@ -257,9 +255,9 @@ if(masterplanButton){
     const c    = (centerIdx + total) % total;
     const prev = (c - 1 + total) % total;
     const next = (c + 1) % total;
-  
+
     const isMobile = window.innerWidth <= 768;
-  
+
     cards.forEach((card, i) => {
       const inGroup = isMobile
         ? i === c
@@ -270,12 +268,14 @@ if(masterplanButton){
   }
 
   if(prevBtn) prevBtn.addEventListener("click", () => {
-    current = (current - 3 + total) % total;
+    const step = window.innerWidth <= 768 ? 1 : 3;
+    current = (current - step + total) % total;
     showGroup(current);
   });
 
   if(nextBtn) nextBtn.addEventListener("click", () => {
-    current = (current + 3) % total;
+    const step = window.innerWidth <= 768 ? 1 : 3;
+    current = (current + step) % total;
     showGroup(current);
   });
 
@@ -291,9 +291,10 @@ if(masterplanButton){
   track.addEventListener("touchend",   e => {
     const diff = touchStart - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) {
+      const step = window.innerWidth <= 768 ? 1 : 3;
       current = diff > 0
-        ? (current + 3) % total
-        : (current - 3 + total) % total;
+        ? (current + step) % total
+        : (current - step + total) % total;
       showGroup(current);
     }
   });
@@ -385,15 +386,11 @@ if(masterplanButton){
 })();
 
 
-
-
-
 // ===============================
 // STAT CARDS COUNTER ANIMATION
 // ===============================
 
 (function(){
-  // Only animate numeric stat numbers
   const statNumbers = document.querySelectorAll(".stat-number");
 
   const observer = new IntersectionObserver((entries) => {
@@ -404,23 +401,20 @@ if(masterplanButton){
       const text = el.textContent.trim();
       const num = parseFloat(text.replace(/[^0-9.]/g, ""));
 
-      // Only animate if it contains a number
       if(!isNaN(num) && num > 0){
         const prefix = text.match(/^[^0-9]*/)?.[0] || "";
         const suffix = text.match(/[^0-9.]+$/)?.[0] || "";
-        let start = 0;
         const duration = 1400;
         const startTime = performance.now();
 
         function update(now){
           const elapsed = now - startTime;
           const progress = Math.min(elapsed / duration, 1);
-          // Ease out
           const eased = 1 - Math.pow(1 - progress, 3);
           const current = Math.round(eased * num);
           el.textContent = prefix + current + suffix;
           if(progress < 1) requestAnimationFrame(update);
-          else el.textContent = text; // restore exact original
+          else el.textContent = text;
         }
 
         requestAnimationFrame(update);
