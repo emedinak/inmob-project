@@ -1113,6 +1113,14 @@ img{ max-width:100%; display:block; }
   .masterplan-grid{ grid-template-columns:1fr; gap:32px; }
   .masterplan-copy h2{ font-size:32px; line-height:1.1; }
 
+  /* --- Lifestyle --- */
+.lifestyle-grid { grid-template-columns:1fr; gap:16px; }
+.lifestyle-side { grid-template-rows:auto auto; gap:16px; }  /* ← este es el fix */
+.lifestyle-image.large img{ height:280px; }
+.lifestyle-image.small img{ height:210px; }
+.lifestyle-text-card{ padding:26px 22px; border-radius:20px; }
+.lifestyle-text-card h3{ font-size:26px; }
+
   /* --- Location --- */
   .location-container{ grid-template-columns:1fr; gap:36px; }
   .location-text{
