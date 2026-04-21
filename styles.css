@@ -1173,3 +1173,7 @@ img{ max-width:100%; display:block; }
   .location-text h2{ font-size:30px; }
   .section-title{ font-size:28px; }
 }
+
+#contact {
+  scroll-margin-top: 80px;
+}
