@@ -1091,7 +1091,8 @@ img{ max-width:100%; display:block; }
   .about-grid{ grid-template-columns:1fr; gap:32px; }
   .about-copy h2{ font-size:32px; line-height:1.1; margin-bottom:16px; }
   .about-copy p{ font-size:15px; }
-  .about-image{ height:280px; }
+  .about-image{ height:300px; }
+  .about { padding-bottom: 0; }
 
   /* --- Lifestyle --- */
   .lifestyle-grid{ grid-template-columns:1fr; gap:16px; }
