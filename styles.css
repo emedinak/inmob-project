@@ -760,10 +760,13 @@ img{ max-width:100%; display:block; }
 .lightbox img{
   max-width:90%; max-height:90%;
   border-radius:10px;
-  transform:scale(0.88);
   opacity:0;
-  transition:transform 0.4s cubic-bezier(.22,.61,.36,1), opacity 0.35s ease;
+  transition: opacity 0.35s ease;
+  transform-origin: center center;
+  user-select: none;
+  -webkit-user-drag: none;
 }
+.lightbox.open img{ opacity:1; }
 .lightbox.open img{ transform:scale(1); opacity:1; }
 .close-lightbox{
   position:absolute;

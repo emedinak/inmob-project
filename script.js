@@ -64,85 +64,120 @@ if(hamburger && navLinks){
 // LIGHTBOX (with animation)
 // ===============================
 
+// ===============================
+// LIGHTBOX (double click zoom + pinch)
+// ===============================
+
 const lightbox    = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const closeBtn    = document.querySelector(".close-lightbox");
 
-function openLightbox(src){
+let scale = 1;
+let translateX = 0, translateY = 0;
+let isDragging = false;
+let dragStartX = 0, dragStartY = 0;
+
+function resetZoom() {
+  scale = 1; translateX = 0; translateY = 0;
+  lightboxImg.style.transform = "";
+  lightboxImg.style.cursor = "";
+}
+
+function applyTransform() {
+  lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+  lightboxImg.style.cursor = scale > 1 ? "grab" : "";
+}
+
+function openLightbox(src) {
   lightboxImg.src = src;
   lightbox.style.display = "flex";
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      lightbox.classList.add("open");
-    });
-  });
+  resetZoom();
+  requestAnimationFrame(() => requestAnimationFrame(() => lightbox.classList.add("open")));
   document.body.style.overflow = "hidden";
 }
 
-function closeLightbox(){
+function closeLightbox() {
   lightbox.classList.remove("open");
   setTimeout(() => {
     lightbox.style.display = "none";
     document.body.style.overflow = "";
+    resetZoom();
   }, 350);
 }
 
-if(closeBtn) closeBtn.addEventListener("click", closeLightbox);
+if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
 
-if(lightbox){
+if (lightbox) {
+
   lightbox.addEventListener("click", (e) => {
-    if(e.target !== lightboxImg) closeLightbox();
+    if (e.target !== lightboxImg) closeLightbox();
   });
+
+  // Doble click — zoom in/out
+  lightboxImg.addEventListener("dblclick", (e) => {
+    e.stopPropagation();
+    if (scale > 1) {
+      scale = 1; translateX = 0; translateY = 0;
+    } else {
+      scale = 2.5;
+    }
+    lightboxImg.style.transition = "transform 0.3s ease";
+    applyTransform();
+    setTimeout(() => lightboxImg.style.transition = "", 300);
+  });
+
+  // Drag cuando hay zoom
+  lightboxImg.addEventListener("mousedown", (e) => {
+    if (scale <= 1) return;
+    e.preventDefault();
+    isDragging = true;
+    dragStartX = e.clientX - translateX;
+    dragStartY = e.clientY - translateY;
+    lightboxImg.style.cursor = "grabbing";
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    translateX = e.clientX - dragStartX;
+    translateY = e.clientY - dragStartY;
+    applyTransform();
+  });
+
+  window.addEventListener("mouseup", () => {
+    if (!isDragging) return;
+    isDragging = false;
+    lightboxImg.style.cursor = scale > 1 ? "grab" : "";
+  });
+
+  // Pinch zoom móvil
+  let lastDist = 0;
+
+  lightbox.addEventListener("touchstart", (e) => {
+    if (e.touches.length === 2) {
+      lastDist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+    }
+  });
+
+  lightbox.addEventListener("touchmove", (e) => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      scale = Math.min(Math.max(1, scale * (dist / lastDist)), 5);
+      lastDist = dist;
+      applyTransform();
+    }
+  }, { passive: false });
 }
 
 document.addEventListener("keydown", (e) => {
-  if(e.key === "Escape") closeLightbox();
+  if (e.key === "Escape") closeLightbox();
 });
-
-
-// ===============================
-// CONTACT FORM
-// ===============================
-
-const form       = document.getElementById("contact-form");
-const message    = document.getElementById("form-message");
-const formSubmit = document.getElementById("form-submit");
-
-if(form){
-  form.addEventListener("submit", async function(e){
-    e.preventDefault();
-
-    formSubmit.disabled    = true;
-    formSubmit.textContent = "Enviando...";
-
-    const data = new FormData(form);
-
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if(response.ok){
-        message.style.display  = "block";
-        message.style.color    = "green";
-        message.textContent    = "Mensaje enviado. Nos pondremos en contacto pronto.";
-        form.reset();
-        message.scrollIntoView({ behavior: "smooth" });
-      } else {
-        throw new Error("error");
-      }
-    } catch {
-      message.style.display = "block";
-      message.style.color   = "red";
-      message.textContent   = "Hubo un error. Intenta nuevamente.";
-    } finally {
-      formSubmit.disabled    = false;
-      formSubmit.textContent = "Enviar";
-    }
-  });
-}
 
 
 // ===============================
