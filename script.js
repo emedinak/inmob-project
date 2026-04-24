@@ -59,11 +59,6 @@ if(hamburger && navLinks){
   });
 }
 
-
-// ===============================
-// LIGHTBOX (with animation)
-// ===============================
-
 // ===============================
 // LIGHTBOX (zoom buttons + drag)
 // ===============================
@@ -137,7 +132,7 @@ if (lightbox) {
     if (e.target !== lightboxImg) closeLightbox();
   });
 
-  // Drag
+  // Drag mouse (desktop)
   lightboxImg.addEventListener("mousedown", (e) => {
     if (scale <= 1) return;
     e.preventDefault();
@@ -160,16 +155,22 @@ if (lightbox) {
     lightboxImg.style.cursor = scale > 1 ? "grab" : "default";
   });
 
-  // Pinch móvil
+  // Pinch zoom móvil
   let lastDist = 0;
+  let touchDragStartX = 0, touchDragStartY = 0;
+
   lightbox.addEventListener("touchstart", (e) => {
     if (e.touches.length === 2) {
       lastDist = Math.hypot(
         e.touches[0].clientX - e.touches[1].clientX,
         e.touches[0].clientY - e.touches[1].clientY
       );
+    } else if (e.touches.length === 1 && scale > 1) {
+      touchDragStartX = e.touches[0].clientX - translateX;
+      touchDragStartY = e.touches[0].clientY - translateY;
     }
   });
+
   lightbox.addEventListener("touchmove", (e) => {
     if (e.touches.length === 2) {
       e.preventDefault();
@@ -179,6 +180,11 @@ if (lightbox) {
       );
       scale = Math.min(Math.max(1, scale * (dist / lastDist)), 5);
       lastDist = dist;
+      applyTransform();
+    } else if (e.touches.length === 1 && scale > 1) {
+      e.preventDefault();
+      translateX = e.touches[0].clientX - touchDragStartX;
+      translateY = e.touches[0].clientY - touchDragStartY;
       applyTransform();
     }
   }, { passive: false });
