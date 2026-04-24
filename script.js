@@ -103,47 +103,36 @@ document.addEventListener("keydown", (e) => {
 // ===============================
 // CONTACT FORM
 // ===============================
+// ===============================
+// CONTACT FORM → WHATSAPP
+// ===============================
 
 const form       = document.getElementById("contact-form");
-const message    = document.getElementById("form-message");
 const formSubmit = document.getElementById("form-submit");
 
-if(form){
-  form.addEventListener("submit", async function(e){
+if (form) {
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    formSubmit.disabled    = true;
-    formSubmit.textContent = "Enviando...";
+    const nombre   = form.querySelector('[name="nombre"]').value.trim();
+    const apellido = form.querySelector('[name="apellido"]').value.trim();
+    const email    = form.querySelector('[name="email"]').value.trim();
+    const telefono = form.querySelector('[name="telefono"]').value.trim();
+    const mensaje  = form.querySelector('[name="mensaje"]').value.trim();
 
-    const data = new FormData(form);
+    const texto =
+      `Hola, me interesa Cádiz Ayangue. Mis datos son:\n` +
+      `• Nombre: ${nombre} ${apellido}\n` +
+      `• Email: ${email}\n` +
+      (telefono ? `• Teléfono: ${telefono}\n` : "") +
+      (mensaje  ? `• Mensaje: ${mensaje}`      : "");
 
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
+    const url = `https://wa.me/593958924566?text=${encodeURIComponent(texto)}`;
+    window.open(url, "_blank");
 
-      if(response.ok){
-        message.style.display  = "block";
-        message.style.color    = "green";
-        message.textContent    = "Mensaje enviado. Nos pondremos en contacto pronto.";
-        form.reset();
-        message.scrollIntoView({ behavior: "smooth" });
-      } else {
-        throw new Error("error");
-      }
-    } catch {
-      message.style.display = "block";
-      message.style.color   = "red";
-      message.textContent   = "Hubo un error. Intenta nuevamente.";
-    } finally {
-      formSubmit.disabled    = false;
-      formSubmit.textContent = "Enviar";
-    }
+    form.reset();
   });
 }
-
 
 // ===============================
 // COVERFLOW GALLERY
