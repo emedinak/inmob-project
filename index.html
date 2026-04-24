@@ -256,13 +256,16 @@
                 <p>Déjanos tus datos y te contactaremos con más detalles, disponibilidad y próximos avances.</p>
             </div>
 
-            <form class="contact-form" id="contact-form" data-reveal="right" data-delay="150">
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdawaebr" method="POST" data-reveal="right" data-delay="150">
                 <input type="text" name="nombre" placeholder="Nombre" required />
                 <input type="text" name="apellido" placeholder="Apellido" required />
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="text" name="telefono" placeholder="Teléfono">
                 <textarea name="mensaje" placeholder="Mensaje"></textarea>
                 <button type="submit" id="form-submit">Enviar</button>
+                <p id="form-message" style="display:none; margin-top:10px; color:green;">
+                    Mensaje enviado. Nos pondremos en contacto pronto.
+                </p>
             </form>
         </div>
     </section>
