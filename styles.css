@@ -840,7 +840,7 @@ img{ max-width:100%; display:block; }
    ================================ */
 
 .amenities{
-  padding:120px 0 100px;
+  padding:80px 0 70px;
   background:var(--light);
   overflow:hidden;
 }
@@ -848,7 +848,7 @@ img{ max-width:100%; display:block; }
 .amenities-subtitle{
   text-align:center;
   max-width:640px;
-  margin:0 auto 60px;
+  margin:0 auto 20px;
   color:var(--muted);
   font-size:16px;
   line-height:1.8;
@@ -1175,5 +1175,9 @@ img{ max-width:100%; display:block; }
 }
 
 #contact {
+  scroll-margin-top: 80px;
+}
+
+#amenities {
   scroll-margin-top: 80px;
 }
