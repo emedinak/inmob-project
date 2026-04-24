@@ -38,7 +38,7 @@ img{ max-width:100%; display:block; }
 .section-shell{ width:min(1180px, 90%); margin:0 auto; }
 
 .section-kicker{
-  font-size:12px;
+  font-size:12px !important;
   letter-spacing:0.18em;
   text-transform:uppercase;
   color:var(--accent-dark);
@@ -608,7 +608,7 @@ img{ max-width:100%; display:block; }
    CONTACT
    ================================ */
 
-.contact{ padding:0 0 120px; }
+.contact{ padding: 60px 0; }
 
 .contact-grid{
   display:grid;
