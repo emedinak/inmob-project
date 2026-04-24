@@ -65,7 +65,7 @@ if(hamburger && navLinks){
 // ===============================
 
 // ===============================
-// LIGHTBOX (double click zoom + pinch)
+// LIGHTBOX (zoom buttons + drag)
 // ===============================
 
 const lightbox    = document.getElementById("lightbox");
@@ -85,7 +85,7 @@ function resetZoom() {
 
 function applyTransform() {
   lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-  lightboxImg.style.cursor = scale > 1 ? "grab" : "";
+  lightboxImg.style.cursor = scale > 1 ? "grab" : "default";
 }
 
 function openLightbox(src) {
@@ -107,26 +107,37 @@ function closeLightbox() {
 
 if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
 
-if (lightbox) {
+// Zoom buttons
+const zoomIn  = document.getElementById("zoom-in");
+const zoomOut = document.getElementById("zoom-out");
 
+if (zoomIn) {
+  zoomIn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    scale = Math.min(scale + 0.5, 5);
+    lightboxImg.style.transition = "transform 0.25s ease";
+    applyTransform();
+    setTimeout(() => lightboxImg.style.transition = "", 250);
+  });
+}
+
+if (zoomOut) {
+  zoomOut.addEventListener("click", (e) => {
+    e.stopPropagation();
+    scale = Math.max(scale - 0.5, 1);
+    if (scale === 1) { translateX = 0; translateY = 0; }
+    lightboxImg.style.transition = "transform 0.25s ease";
+    applyTransform();
+    setTimeout(() => lightboxImg.style.transition = "", 250);
+  });
+}
+
+if (lightbox) {
   lightbox.addEventListener("click", (e) => {
     if (e.target !== lightboxImg) closeLightbox();
   });
 
-  // Doble click — zoom in/out
-  lightboxImg.addEventListener("dblclick", (e) => {
-    e.stopPropagation();
-    if (scale > 1) {
-      scale = 1; translateX = 0; translateY = 0;
-    } else {
-      scale = 2.5;
-    }
-    lightboxImg.style.transition = "transform 0.3s ease";
-    applyTransform();
-    setTimeout(() => lightboxImg.style.transition = "", 300);
-  });
-
-  // Drag cuando hay zoom
+  // Drag
   lightboxImg.addEventListener("mousedown", (e) => {
     if (scale <= 1) return;
     e.preventDefault();
@@ -146,12 +157,11 @@ if (lightbox) {
   window.addEventListener("mouseup", () => {
     if (!isDragging) return;
     isDragging = false;
-    lightboxImg.style.cursor = scale > 1 ? "grab" : "";
+    lightboxImg.style.cursor = scale > 1 ? "grab" : "default";
   });
 
-  // Pinch zoom móvil
+  // Pinch móvil
   let lastDist = 0;
-
   lightbox.addEventListener("touchstart", (e) => {
     if (e.touches.length === 2) {
       lastDist = Math.hypot(
@@ -160,7 +170,6 @@ if (lightbox) {
       );
     }
   });
-
   lightbox.addEventListener("touchmove", (e) => {
     if (e.touches.length === 2) {
       e.preventDefault();
