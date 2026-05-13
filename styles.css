@@ -447,8 +447,6 @@ img{ max-width:100%; display:block; }
   box-shadow:0 35px 80px rgba(0,0,0,0.14);
 }
 .about-image{ width:100%; height:520px; object-fit:cover; transition:transform 0.7s ease; }
-.about-image-wrap:hover .about-image{ transform:scale(1.04); }
-
 
 /* ================================
    LIFESTYLE
@@ -467,7 +465,6 @@ img{ max-width:100%; display:block; }
 
 .lifestyle-image{ transition:transform 0.5s ease, box-shadow 0.5s ease; }
 .lifestyle-image:hover{ transform:translateY(-5px); box-shadow:0 30px 70px rgba(0,0,0,0.12); }
-.lifestyle-image:hover img{ transform:scale(1.04); }
 .lifestyle-image.large img{ width:100%; height:560px; object-fit:cover; transition:transform 0.7s ease; }
 
 .lifestyle-side{ display:grid; grid-template-rows:auto auto; gap:16px; }
@@ -538,7 +535,6 @@ img{ max-width:100%; display:block; }
 }
 .masterplan-image-wrap:hover{ box-shadow:0 35px 80px rgba(0,0,0,0.14); }
 .masterplan-image{ width:100%; border-radius:18px; cursor:pointer; transition:transform 0.5s ease; }
-.masterplan-image:hover{ transform:scale(1.02); }
 
 
 /* ================================
@@ -906,7 +902,6 @@ img{ max-width:100%; display:block; }
   object-fit:cover;
   transition:transform 0.6s ease;
 }
-.am-card:hover .am-img img{ transform:scale(1.05); }
 
 .am-img.no-image{
   background:linear-gradient(135deg, #f2efe9, #e4ddd3);
