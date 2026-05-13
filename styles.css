@@ -30,7 +30,7 @@ body{
   line-height:1.6;
   overflow-x:hidden;
   max-width:100%;
-  touch-action:pan-y; /* prevent horizontal pan on body */
+  touch-action:pan-y;
 }
 
 img{ max-width:100%; display:block; }
@@ -207,20 +207,11 @@ img{ max-width:100%; display:block; }
 
 .navbar.scrolled .hamburger span{ background:var(--text); }
 
-/* When nav is open, hamburger is always on dark overlay → keep white */
 .hamburger.open span{ background:white !important; }
 
 .hamburger.open span:nth-child(1){ transform:translateY(8px) rotate(45deg); }
 .hamburger.open span:nth-child(2){ opacity:0; transform:scaleX(0); }
 .hamburger.open span:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
-
-
-/* ================================
-   MOBILE NAV OVERLAY
-   ================================ */
-
-/* Desktop: inline flex */
-/* Mobile: full-screen overlay (hidden by default, toggled via .open) */
 
 
 /* ================================
@@ -394,11 +385,6 @@ img{ max-width:100%; display:block; }
   padding:28px 20px;
   box-shadow:var(--shadow);
   text-align:center;
-  transition:transform 0.35s ease, box-shadow 0.35s ease;
-}
-.stat-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 28px 60px rgba(0,0,0,0.13);
 }
 
 .stat-number{
@@ -440,13 +426,8 @@ img{ max-width:100%; display:block; }
   border-radius:28px;
   overflow:hidden;
   box-shadow:var(--shadow);
-  transition:transform 0.5s ease, box-shadow 0.5s ease;
 }
-.about-image-wrap:hover{
-  transform:scale(1.015) translateY(-4px);
-  box-shadow:0 35px 80px rgba(0,0,0,0.14);
-}
-.about-image{ width:100%; height:520px; object-fit:cover; transition:transform 0.7s ease; }
+.about-image{ width:100%; height:520px; object-fit:cover; }
 
 /* ================================
    LIFESTYLE
@@ -463,13 +444,11 @@ img{ max-width:100%; display:block; }
 .lifestyle-image,
 .lifestyle-text-card{ border-radius:26px; overflow:hidden; }
 
-.lifestyle-image{ transition:transform 0.5s ease, box-shadow 0.5s ease; }
-.lifestyle-image:hover{ transform:translateY(-5px); box-shadow:0 30px 70px rgba(0,0,0,0.12); }
-.lifestyle-image.large img{ width:100%; height:560px; object-fit:cover; transition:transform 0.7s ease; }
+.lifestyle-image.large img{ width:100%; height:560px; object-fit:cover; }
 
 .lifestyle-side{ display:grid; grid-template-rows:auto auto; gap:16px; }
 
-.lifestyle-image.small img{ width:100%; height:270px; object-fit:cover; transition:transform 0.7s ease; }
+.lifestyle-image.small img{ width:100%; height:270px; object-fit:cover; }
 
 .lifestyle-text-card{
   background:var(--light);
@@ -531,10 +510,8 @@ img{ max-width:100%; display:block; }
   border-radius:28px;
   padding:16px;
   box-shadow:var(--shadow);
-  transition:box-shadow 0.4s ease;
 }
-.masterplan-image-wrap:hover{ box-shadow:0 35px 80px rgba(0,0,0,0.14); }
-.masterplan-image{ width:100%; border-radius:18px; cursor:pointer; transition:transform 0.5s ease; }
+.masterplan-image{ width:100%; border-radius:18px; cursor:pointer; }
 
 
 /* ================================
@@ -595,9 +572,7 @@ img{ max-width:100%; display:block; }
   border-radius:24px;
   box-shadow:var(--shadow);
   display:block;
-  transition:box-shadow 0.4s ease;
 }
-.location-map iframe:hover{ box-shadow:0 30px 70px rgba(0,0,0,0.13); }
 
 
 /* ================================
@@ -754,7 +729,7 @@ img{ max-width:100%; display:block; }
 }
 .lightbox.open{ background:rgba(0,0,0,0.92); }
 .lightbox img{
-  max-width:90%; max-height:90%;
+  max-width:90%; max-height:80%;
   border-radius:10px;
   opacity:0;
   transition: opacity 0.35s ease;
@@ -763,7 +738,6 @@ img{ max-width:100%; display:block; }
   -webkit-user-drag: none;
 }
 .lightbox.open img{ opacity:1; }
-.lightbox.open img{ transform:scale(1); opacity:1; }
 .close-lightbox{
   position:absolute;
   top:24px; right:30px;
@@ -883,9 +857,7 @@ img{ max-width:100%; display:block; }
   overflow:hidden;
   box-shadow:0 10px 35px rgba(0,0,0,0.06);
   cursor:pointer;
-  transition:box-shadow 0.35s ease, transform 0.35s ease;
 }
-.am-card:hover{ transform:translateY(-4px); }
 .am-card.active{
   box-shadow:0 20px 50px rgba(0,0,0,0.13);
   cursor:default;
@@ -900,7 +872,6 @@ img{ max-width:100%; display:block; }
 .am-img img{
   width:100%; height:100%;
   object-fit:cover;
-  transition:transform 0.6s ease;
 }
 
 .am-img.no-image{
@@ -909,8 +880,7 @@ img{ max-width:100%; display:block; }
   align-items:center;
   justify-content:center;
 }
-.am-icon{ font-size:52px; opacity:0.5; transition:transform 0.4s ease, opacity 0.4s ease; }
-.am-card:hover .am-icon{ transform:scale(1.15); opacity:0.75; }
+.am-icon{ font-size:52px; opacity:0.5; }
 
 .am-lightbox-trigger{ cursor:zoom-in; }
 .am-zoom{
@@ -1028,7 +998,6 @@ img{ max-width:100%; display:block; }
   .nav-container{ padding:16px 0; }
   .hamburger{ display:flex; }
 
-  /* When scrolled, logo is visible — need space for it */
   .navbar.scrolled .logo{ opacity:1; pointer-events:auto; }
 
   /* Mobile nav overlay */
@@ -1094,31 +1063,24 @@ img{ max-width:100%; display:block; }
 
   /* --- Lifestyle --- */
   .lifestyle-grid{ grid-template-columns:1fr; gap:16px; }
+  .lifestyle-side { grid-template-rows:auto auto; gap:16px; }
   .lifestyle-image.large img{ height:280px; }
   .lifestyle-image.small img{ height:210px; }
   .lifestyle-text-card{ padding:26px 22px; border-radius:20px; }
   .lifestyle-text-card h3{ font-size:26px; }
 
   /* --- Amenities --- */
-.amenities-subtitle { font-size:15px; margin-bottom:40px; }
-.am-carousel-outer { gap:10px; padding:0 16px; }
-.am-scroll-wrap { overflow: visible; }
-.am-scroll-track { gap:0; padding:24px 0 32px; justify-content:center; }
-.am-card { flex:0 0 100%; max-width:100%; display:none; }
-.am-card.active { display:flex; flex-direction:column; }
-.am-arrow { width:38px; height:38px; font-size:14px; }
+  .amenities-subtitle { font-size:15px; margin-bottom:40px; }
+  .am-carousel-outer { gap:10px; padding:0 16px; }
+  .am-scroll-wrap { overflow: visible; }
+  .am-scroll-track { gap:0; padding:24px 0 32px; justify-content:center; }
+  .am-card { flex:0 0 100%; max-width:100%; display:none; }
+  .am-card.active { display:flex; flex-direction:column; }
+  .am-arrow { width:38px; height:38px; font-size:14px; }
 
   /* --- Masterplan --- */
   .masterplan-grid{ grid-template-columns:1fr; gap:32px; }
   .masterplan-copy h2{ font-size:32px; line-height:1.1; }
-
-  /* --- Lifestyle --- */
-.lifestyle-grid { grid-template-columns:1fr; gap:16px; }
-.lifestyle-side { grid-template-rows:auto auto; gap:16px; }  /* ← este es el fix */
-.lifestyle-image.large img{ height:280px; }
-.lifestyle-image.small img{ height:210px; }
-.lifestyle-text-card{ padding:26px 22px; border-radius:20px; }
-.lifestyle-text-card h3{ font-size:26px; }
 
   /* --- Location --- */
   .location-container{ grid-template-columns:1fr; gap:36px; }
@@ -1139,7 +1101,7 @@ img{ max-width:100%; display:block; }
   .contact-copy h2{ font-size:32px; }
   .contact-form{ margin-top:0; padding:22px 18px; border-radius:22px; }
   .contact-form input,
-  .contact-form textarea{ font-size:16px; /* prevents iOS zoom */ border-radius:14px; }
+  .contact-form textarea{ font-size:16px; border-radius:14px; }
 
   /* --- Footer --- */
   .footer-bar{
