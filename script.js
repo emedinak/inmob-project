@@ -203,13 +203,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const galleryImages = [
     "images/CCAY001.jpg.jpeg",
-    "images/CCAY002.jpg.jpeg",
+    "images/CCAY002.png",
     "images/CCAY003.jpg.jpeg",
     "images/CCAY004.jpg.jpeg",
-    "images/CCAY005.jpg.jpeg",
-    "images/CCAY006.jpg.jpeg",
+    "images/CCAY005.png",
+    "images/CCAY006.png",
     "images/CCAY007.jpg.jpeg",
-    "images/CCAY008.jpg.jpeg",
+    "images/CCAY008.png",
     "images/CCAY009.jpg.jpeg"
   ];
 
