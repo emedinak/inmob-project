@@ -475,3 +475,48 @@ if(masterplanButton){
 
   statNumbers.forEach(el => observer.observe(el));
 })();
+
+// ===============================
+// CONTACT FORM — WEB3FORMS
+// ===============================
+(function () {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const btn = document.getElementById("form-submit");
+    const msg = document.getElementById("form-message");
+    const data = new FormData(form);
+
+    btn.disabled = true;
+    btn.textContent = "Enviando…";
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data,
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        form.reset();
+        msg.style.display = "block";
+        msg.style.color = "green";
+        msg.textContent = "Mensaje enviado. Nos pondremos en contacto pronto.";
+      } else {
+        msg.style.display = "block";
+        msg.style.color = "red";
+        msg.textContent = "Ocurrió un error. Por favor intenta de nuevo.";
+      }
+    } catch {
+      msg.style.display = "block";
+      msg.style.color = "red";
+      msg.textContent = "Ocurrió un error de red. Por favor intenta de nuevo.";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Enviar";
+    }
+  });
+})();
